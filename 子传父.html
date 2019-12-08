@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/vue/2.6.9/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- 在子组件上触发原生的js事件 在原生事件后面加上。native即可出发原生的事件-->
+		<my-component @click.native="handlerClick"></my-component>
+	</div>
+</body>
+<script>
+	Vue.component('my-component',{
+		template:'<button>点击我</button>',
+		data:function(){
+			return {
+
+			}
+		},
+		methods:{
+			handlerClick:function(){
+				console.log(1111);
+			}
+		}
+	})
+	var app=new Vue({
+		el:'#app',
+		data:{
+
+		},
+		methods:{
+			handlerClick:function(){
+				console.log(2222);
+			}
+		}
+	})
+</script>
+</html>

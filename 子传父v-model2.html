@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/vue/2.6.9/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p>总数:{{total}}</p>
+		<!-- 直接使用v-model 在子组件中实际上触发的是特殊的input事件 -->
+		<my-component @input="hanldeGetTotal"></my-component>
+	</div>
+</body>
+<script>
+	Vue.component('my-component',{
+		template:'<button @click="handlerClick">+1</button>',
+		data:function(){
+			return {
+				counter:0
+			}
+		},
+		methods:{
+			handlerClick:function(){
+				this.counter++;
+				this.$emit('input',this.counter)
+			}
+		}
+	})
+	var app=new Vue({
+		el:'#app',
+		data:{
+			total:0
+		},
+		methods:{
+			hanldeGetTotal:function(total){
+				this.total=total;
+			}
+		}
+	})
+</script>
+</html>

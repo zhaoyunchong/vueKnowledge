@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/vue/2.6.9/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<child-component>
+			<!-- 作用域插槽 使用一个可以复用的模板替换已经渲染元素 -->
+			<template scope="props">
+				<p>来自父组件的内容</p>
+				<p>{{props.msg}}</p>
+			</template>
+		</child-component>
+	</div>
+</body>
+<script>
+	Vue.component('child-component',{
+		//没有具名的内容分发 统一到 没有名字的slot
+		template:'<div><slot msg="来自子组件的内容"></slot></div>'
+	})
+	var app=new Vue({
+		el:'#app'
+	})
+</script>
+</html>

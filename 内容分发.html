@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/vue/2.6.9/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<child-component>
+			<p>分发的内容</p>
+			<p>更多分发的内容</p>
+		</child-component>
+	</div>
+</body>
+<script>
+	Vue.component('child-component',{
+		template:'<div><slot><p>如果父组件没有内容发布我将会出现</p></slot></div>' //如果父组件中没有内容分发的话 这句话将会出现
+	})
+	var app=new Vue({
+		el:'#app'
+	})
+</script>
+</html>

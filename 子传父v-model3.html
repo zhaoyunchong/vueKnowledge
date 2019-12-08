@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/vue/2.6.9/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p>总数:{{total}}</p>
+		<!-- 直接使用v-model 在子组件中实际上触发的是特殊的input事件 将value传递给子组件 下面的其实是v-model=>:value="total" -->
+		<my-component v-model="total"></my-component>
+		<button @click="handleReduce">-1</button>
+	</div>
+</body>
+<script>
+	Vue.component('my-component',{
+		props:["value"],
+		template:'<input :value="value" @input="updateValue">',
+		data:function(){
+			return {
+			}
+		},
+		methods:{
+			updateValue:function(event){
+				this.$emit('input',event.target.value)
+			}
+		}
+	})
+	var app=new Vue({
+		el:'#app',
+		data:{
+			total:0
+		},
+		methods:{
+			handleReduce:function(){
+				this.total--;
+			}
+		}
+	})
+</script>
+</html>
