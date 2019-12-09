@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- 父组件定义一个非标准属性 如果是变量的话 要加上冒号 是字符串的话 不用加 -->
+		{{initNum}}
+		<my-component color="red"></my-component>
+	</div>
+</body>
+<script>
+	Vue.component('my-component',{
+		props:['color'],
+		template:"<div :style='style'>父亲组件给我传递的信息</div>",
+		data(){
+		},
+		computed:{
+			style:function(){
+				return {
+					color:this.color
+				}
+			}
+		}
+	})
+	var app1=new Vue({
+		el:'#app',//或者'#app'
+		data:{
+			initNum:1
+		}
+	})
+</script>
+</html>

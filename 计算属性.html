@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p>{{reverseText}}</p>
+	</div>
+</body>
+<script>
+	var app=new Vue({
+		el:'#app',//或者'#app'
+		data:{
+			test:'123,456'
+		},
+		methods:{
+			handler(){
+				this.show=!this.show;
+			}
+		},
+		computed:{  //计算属性  依赖于data中的属性值
+			reverseText:function(){
+				return this.test.split(',').reverse().join(',');
+			}
+		}
+	})
+</script>
+</html>

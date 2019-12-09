@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		{{number/10}}
+		{{isOk?'确定':'取消'}}
+		{{text.split(',').reverse().join(',')}}
+		{{man | formdata }}
+	</div>
+</body>
+<script>
+	var app=new Vue({
+		el:'#app',//或者'#app'
+		data:{
+			number:100,
+			isOk:false,
+			text:'123,456',
+			man:1
+		},
+		filters:{
+			//过滤器
+			formdata(value){
+				return value==1? "男":'女';
+			}
+		},
+		created(){
+			var _that=this;
+			var timer=setInterval(function(){
+				_that.date=new Date();
+			},1000)
+		},
+		mounted(){
+			console.log(this.$el)
+		}
+	})
+	// app.$el.innerHTML="hello world";
+	// app.a=2;
+	// console.log(app.a)
+</script>
+</html>

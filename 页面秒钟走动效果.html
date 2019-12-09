@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		{{date}}
+	</div>
+</body>
+<script>
+	new Vue({
+		el:'#app',
+		data:{
+			date:new Date().LocalString();
+		},
+		mounted(){
+			var _this=this;
+			this.timer=setInterval(function(){
+				_this.date=new Date();
+			},1000)
+		},
+		beforeDestroy(){
+			if(this.timer){
+				clearInterval(this.timer);
+			}
+		}
+	})
+</script>
+</html>

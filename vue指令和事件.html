@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p v-if="show">显示这段文字</p>
+		<button @click="handler">显示/隐藏</button>
+	</div>
+</body>
+<script>
+	var app=new Vue({
+		el:'#app',//或者'#app'
+		data:{
+			show:true
+		},
+		methods:{
+			handler(){
+				this.show=!this.show;
+			}
+		}
+	})
+</script>
+</html>

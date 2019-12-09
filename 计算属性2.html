@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p>{{prices}}</p>
+	</div>
+</body>
+<script>
+	var app=new Vue({
+		el:'#app',//或者'#app'
+		data:{
+			package1:[{
+				name:'ipad',
+				price:1999
+			},
+			{
+				name:'iphone11',
+				price:8999
+			}
+			],
+			package2:[
+				{
+					name:'huawei',
+					price:10999
+				},
+				{
+					name:'xiaomi',
+					price:1999
+				}
+			]
+		},
+		methods:{
+			handler(){
+				this.show=!this.show;
+			}
+		},
+		computed:{  //计算属性  依赖于data中的属性值
+			prices:function(){
+				var prices=0;
+				for(var i=0;i<this.package1.length;i++){
+					prices+=this.package1[i].price;
+				}
+				for(var i=0;i<this.package2.length;i++){
+					prices+=this.package2[i].price;
+				}
+				return prices;
+			}
+		}
+	})
+</script>
+</html>
